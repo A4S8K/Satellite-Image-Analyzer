@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Satellite Image Analyzer
 
 ## Overview
@@ -93,3 +94,7 @@ Distributed under the [MIT License](LICENSE).
 # Satellite-Image-Analyzer
 A modular Python system for analyzing satellite imagery using Computer Vision and geospatial technologies, with support for preprocessing, vegetation analysis, anomaly detection, and AI-powered environmental monitoring.
 >>>>>>> 6e0b99a19fb49a216b48dab4e1672ac691690c31
+=======
+# Satellite-Image-Analyzer
+A modular Python system for satellite image analysis using Computer Vision, geospatial technologies, and AI for environmental monitoring.
+>>>>>>> 44aa14cb8af6ece8484df542a0324bc82e871d68

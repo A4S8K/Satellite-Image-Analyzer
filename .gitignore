@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 __pycache__/
 *.py[cod]
 *.so
@@ -18,6 +19,8 @@ dist/
 data/outputs/*
 !data/outputs/.gitkeep
 =======
+=======
+>>>>>>> 44aa14cb8af6ece8484df542a0324bc82e871d68
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -236,4 +239,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+<<<<<<< HEAD
 >>>>>>> 6e0b99a19fb49a216b48dab4e1672ac691690c31
+=======
+>>>>>>> 44aa14cb8af6ece8484df542a0324bc82e871d68
