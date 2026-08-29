@@ -1,0 +1,5 @@
+[preprocessing]
+target_width = 1024
+target_height = 1024
+normalize = true
+denoise = true
