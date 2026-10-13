@@ -19,5 +19,7 @@ def normalize_image(image: np.ndarray) -> np.ndarray:
         scale = 255.0 if maximum > 1.0 else 1.0
 
     if scale <= 0:
-        raise ImageProcessingError("Image data type does not have a positive normalization range.")
+        raise ImageProcessingError(
+            "Image data type does not have a positive normalization range."
+        )
     return np.clip(values / scale, 0.0, 1.0)

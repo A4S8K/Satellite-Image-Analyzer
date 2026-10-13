@@ -3,8 +3,8 @@
 from pathlib import Path
 from typing import Any
 
-from pydantic import BaseModel
 import rasterio
+from pydantic import BaseModel
 from rasterio.errors import RasterioError
 
 from satellite_analyzer.io.image_loader import ImageData

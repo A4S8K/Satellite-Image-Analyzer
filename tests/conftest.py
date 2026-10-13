@@ -3,9 +3,9 @@
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
 import pytest
 import rasterio
+from PIL import Image
 from rasterio.transform import from_origin
 
 

@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, UnidentifiedImageError
 import rasterio
+from PIL import Image, UnidentifiedImageError
 from rasterio.errors import RasterioError
 
 from satellite_analyzer.core.exceptions import InvalidImageError, UnsupportedFormatError
@@ -96,7 +96,9 @@ class ImageLoader:
                 array = np.asarray(image)
                 image_format = image.format or path.suffix.removeprefix(".").upper()
         except (OSError, SyntaxError, UnidentifiedImageError) as error:
-            raise InvalidImageError(f"Could not decode image '{path}': {error}") from error
+            raise InvalidImageError(
+                f"Could not decode image '{path}': {error}"
+            ) from error
 
         return ImageData(array=array, path=path, format=image_format.upper())
 
@@ -107,7 +109,9 @@ class ImageLoader:
                 bands = dataset.read()
                 image_format = dataset.driver.upper()
         except (RasterioError, OSError, ValueError) as error:
-            raise InvalidImageError(f"Could not decode TIFF image '{path}': {error}") from error
+            raise InvalidImageError(
+                f"Could not decode TIFF image '{path}': {error}"
+            ) from error
 
         array = bands[0] if bands.shape[0] == 1 else np.moveaxis(bands, 0, -1)
         return ImageData(array=array, path=path, format=image_format)

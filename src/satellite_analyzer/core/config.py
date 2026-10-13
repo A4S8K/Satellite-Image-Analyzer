@@ -1,9 +1,11 @@
 """Configuration loading for the application."""
 
-from pathlib import Path
 import tomllib
+from pathlib import Path
 
 from pydantic import BaseModel, Field
+
+from satellite_analyzer.core.exceptions import SatelliteAnalyzerError
 
 
 class PreprocessingSettings(BaseModel):
@@ -25,6 +27,15 @@ def load_preprocessing_settings(path: Path | None = None) -> PreprocessingSettin
     """Load preprocessing settings from a TOML configuration file."""
 
     config_path = path or default_config_path()
-    with config_path.open("rb") as config_file:
-        values = tomllib.load(config_file)
-    return PreprocessingSettings.model_validate(values.get("preprocessing", {}))
+    # Wheels do not contain repository-level configs. The typed model carries
+    # identical defaults, so installed commands work outside a source checkout.
+    if path is None and not config_path.is_file():
+        return PreprocessingSettings()
+    try:
+        with config_path.open("rb") as config_file:
+            values = tomllib.load(config_file)
+        return PreprocessingSettings.model_validate(values.get("preprocessing", {}))
+    except (OSError, ValueError) as error:
+        raise SatelliteAnalyzerError(
+            f"Could not load preprocessing configuration '{config_path}': {error}"
+        ) from error

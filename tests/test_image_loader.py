@@ -9,7 +9,9 @@ from satellite_analyzer.io.image_loader import ImageLoader
 
 
 @pytest.mark.parametrize("fixture_name", ["png_path", "jpg_path", "tiff_path"])
-def test_loads_supported_images(request: pytest.FixtureRequest, fixture_name: str) -> None:
+def test_loads_supported_images(
+    request: pytest.FixtureRequest, fixture_name: str
+) -> None:
     """PNG, JPEG, and TIFF files decode into a consistent representation."""
 
     image_path = request.getfixturevalue(fixture_name)

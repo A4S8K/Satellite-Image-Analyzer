@@ -3,3 +3,40 @@ target_width = 1024
 target_height = 1024
 normalize = true
 denoise = true
+
+# RGB visual evidence only; these are not thermal fire thresholds.
+[fire]
+hue_min = 0
+hue_max = 35
+red_hue_min = 170
+red_hue_max = 179
+min_saturation = 80
+min_value = 140
+min_red = 140
+min_red_green_ratio = 1.0
+min_red_blue_ratio = 1.2
+# Minimum region area is measured in pixels of the resized analysis image.
+min_region_pixels = 16
+morphology_open_kernel = 0
+connectivity = 8
+
+[analysis]
+max_dimension = 2048
+max_pixels = 40000000
+overlay_alpha = 0.4
+
+# Measured spectral bands only. A sensor name never guesses DN calibration.
+[ndvi]
+sensor = "custom"
+input_units = "auto"
+alignment = "strict"
+resampling = "bilinear"
+max_pixels = 150000000
+denominator_epsilon = 0.000001
+non_vegetation_max = 0.0
+sparse_max = 0.2
+low_max = 0.4
+moderate_max = 0.6
+coverage_threshold = 0.2
+histogram_bins = 50
+preview_max_dimension = 2048

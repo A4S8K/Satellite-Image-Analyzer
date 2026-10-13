@@ -4,6 +4,7 @@ from pathlib import Path
 
 from typer.testing import CliRunner
 
+from satellite_analyzer import __version__
 from satellite_analyzer.cli import app
 
 runner = CliRunner()
@@ -24,7 +25,7 @@ def test_version() -> None:
     result = runner.invoke(app, ["version"])
 
     assert result.exit_code == 0
-    assert "Satellite Image Analyzer 0.1.0" in result.stdout
+    assert f"Satellite Image Analyzer {__version__}" in result.stdout
 
 
 def test_info(png_path: Path) -> None:
